@@ -1,0 +1,308 @@
+{
+  "sumarizacao": {
+    "chamados": 216,
+    "taxa_violacao_pct": 56.0,
+    "mediana_horas": 36.78,
+    "mediana_atualizacoes": 16.0,
+    "por_prioridade": [
+      {
+        "Prioridade": "2 - Alta",
+        "chamados": 6,
+        "taxa_violacao": 100.0
+      },
+      {
+        "Prioridade": "3 - Média",
+        "chamados": 10,
+        "taxa_violacao": 100.0
+      },
+      {
+        "Prioridade": "4 - Baixo",
+        "chamados": 198,
+        "taxa_violacao": 52.5
+      },
+      {
+        "Prioridade": "1 - Crítica",
+        "chamados": 2,
+        "taxa_violacao": 50.0
+      }
+    ],
+    "por_categoria": [
+      {
+        "Categoria": "Access Management",
+        "chamados": 1,
+        "taxa_violacao": 100.0
+      },
+      {
+        "Categoria": "Accounts & Passwords",
+        "chamados": 10,
+        "taxa_violacao": 100.0
+      },
+      {
+        "Categoria": "Printing Services",
+        "chamados": 2,
+        "taxa_violacao": 100.0
+      },
+      {
+        "Categoria": "Software",
+        "chamados": 16,
+        "taxa_violacao": 93.8
+      },
+      {
+        "Categoria": "Collaboration & Office 365",
+        "chamados": 28,
+        "taxa_violacao": 75.0
+      },
+      {
+        "Categoria": "Email & Communication",
+        "chamados": 4,
+        "taxa_violacao": 75.0
+      },
+      {
+        "Categoria": "Other Systems and Application",
+        "chamados": 7,
+        "taxa_violacao": 71.4
+      },
+      {
+        "Categoria": "Computers, Equipment and Acessories",
+        "chamados": 56,
+        "taxa_violacao": 67.9
+      },
+      {
+        "Categoria": "Desk Phone and Mobile devices",
+        "chamados": 7,
+        "taxa_violacao": 28.6
+      },
+      {
+        "Categoria": "Exclusive IT Team Services",
+        "chamados": 84,
+        "taxa_violacao": 28.6
+      },
+      {
+        "Categoria": "Cloud Services",
+        "chamados": 1,
+        "taxa_violacao": 0.0
+      }
+    ],
+    "por_grupo": [
+      {
+        "GrupoAtribuicao": "CMP-INC-FILA-UM",
+        "chamados": 23,
+        "taxa_violacao": 73.9
+      },
+      {
+        "GrupoAtribuicao": "CMP-INC-FILA-DOIS",
+        "chamados": 193,
+        "taxa_violacao": 53.9
+      }
+    ]
+  },
+  "agrupamento": {
+    "k": 3,
+    "silhouette": 0.517,
+    "silhouette_por_k": {
+      "2": 0.461,
+      "3": 0.517,
+      "4": 0.473,
+      "5": 0.474,
+      "6": 0.471,
+      "7": 0.47,
+      "8": 0.454
+    },
+    "perfis": [
+      {
+        "grupo": 1,
+        "chamados": 84,
+        "mediana_horas": 278.81,
+        "mediana_atualizacoes": 28.0,
+        "prioridade_media": 4.0,
+        "taxa_violacao_sla": 98.8,
+        "nome": "Backlog prolongado"
+      },
+      {
+        "grupo": 2,
+        "chamados": 114,
+        "mediana_horas": 2.16,
+        "mediana_atualizacoes": 10.0,
+        "prioridade_media": 4.0,
+        "taxa_violacao_sla": 18.4,
+        "nome": "Fluxo regular"
+      },
+      {
+        "grupo": 3,
+        "chamados": 18,
+        "mediana_horas": 172.54,
+        "mediana_atualizacoes": 23.0,
+        "prioridade_media": 2.44,
+        "taxa_violacao_sla": 94.4,
+        "nome": "Urgentes em atraso"
+      }
+    ]
+  },
+  "classificacao": {
+    "validacao": {
+      "baseline_classe_majoritaria": {
+        "accuracy": {
+          "media": 0.56,
+          "desvio": 0.004
+        },
+        "precision": {
+          "media": 0.56,
+          "desvio": 0.004
+        },
+        "recall": {
+          "media": 1.0,
+          "desvio": 0.0
+        },
+        "f1": {
+          "media": 0.718,
+          "desvio": 0.003
+        },
+        "roc_auc": {
+          "media": 0.5,
+          "desvio": 0.0
+        }
+      },
+      "regressao_logistica": {
+        "accuracy": {
+          "media": 0.84,
+          "desvio": 0.054
+        },
+        "precision": {
+          "media": 0.859,
+          "desvio": 0.056
+        },
+        "recall": {
+          "media": 0.857,
+          "desvio": 0.07
+        },
+        "f1": {
+          "media": 0.856,
+          "desvio": 0.051
+        },
+        "roc_auc": {
+          "media": 0.916,
+          "desvio": 0.037
+        }
+      },
+      "regressao_logistica_sem_atualizacoes": {
+        "accuracy": {
+          "media": 0.733,
+          "desvio": 0.068
+        },
+        "precision": {
+          "media": 0.741,
+          "desvio": 0.064
+        },
+        "recall": {
+          "media": 0.81,
+          "desvio": 0.08
+        },
+        "f1": {
+          "media": 0.772,
+          "desvio": 0.06
+        },
+        "roc_auc": {
+          "media": 0.778,
+          "desvio": 0.065
+        }
+      },
+      "random_forest_comparacao": {
+        "accuracy": {
+          "media": 0.836,
+          "desvio": 0.057
+        },
+        "precision": {
+          "media": 0.849,
+          "desvio": 0.06
+        },
+        "recall": {
+          "media": 0.865,
+          "desvio": 0.07
+        },
+        "f1": {
+          "media": 0.855,
+          "desvio": 0.052
+        },
+        "roc_auc": {
+          "media": 0.909,
+          "desvio": 0.041
+        }
+      },
+      "procedimento": "validação cruzada estratificada 5 partes repetida 10 vezes (50 treinos/testes)",
+      "temporal_70_30": {
+        "treino": 151,
+        "teste": 65,
+        "acuracia": 0.815,
+        "acuracia_baseline": 0.662,
+        "roc_auc": 0.909
+      },
+      "matriz_confusao_limiar_0_5": {
+        "verdadeiro_negativo": 77,
+        "falso_positivo": 18,
+        "falso_negativo": 15,
+        "verdadeiro_positivo": 106
+      }
+    },
+    "coeficientes": [
+      {
+        "variavel": "log_atualizacoes (padronizada)",
+        "coeficiente": 2.467179
+      },
+      {
+        "variavel": "Categoria = Desk Phone and Mobile devices",
+        "coeficiente": -1.179463
+      },
+      {
+        "variavel": "Categoria = Software",
+        "coeficiente": 0.932976
+      },
+      {
+        "variavel": "Categoria = Other Systems and Application",
+        "coeficiente": -0.915261
+      },
+      {
+        "variavel": "GrupoAtribuicao = CMP-INC-FILA-UM",
+        "coeficiente": 0.86015
+      },
+      {
+        "variavel": "GrupoAtribuicao = CMP-INC-FILA-DOIS",
+        "coeficiente": -0.860125
+      },
+      {
+        "variavel": "Categoria = Accounts & Passwords",
+        "coeficiente": 0.683537
+      },
+      {
+        "variavel": "Categoria = Computers, Equipment and Acessories",
+        "coeficiente": 0.602918
+      },
+      {
+        "variavel": "prioridade_num (padronizada)",
+        "coeficiente": -0.398868
+      },
+      {
+        "variavel": "Categoria = Printing Services",
+        "coeficiente": 0.294621
+      },
+      {
+        "variavel": "Categoria = Cloud Services",
+        "coeficiente": -0.23984
+      },
+      {
+        "variavel": "Categoria = Exclusive IT Team Services",
+        "coeficiente": -0.201768
+      }
+    ]
+  },
+  "fila_ficticia": {
+    "chamados": 30,
+    "por_faixa": {
+      "Normal": 11,
+      "Atenção": 6,
+      "Acompanhamento": 5,
+      "Atrasado": 3,
+      "Crítico": 3,
+      "Sem dados suficientes": 2
+    }
+  }
+}

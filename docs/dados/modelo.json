@@ -1,0 +1,131 @@
+{
+  "gerado_em": "2026-11-03",
+  "aviso": "Modelo treinado offline em base reduzida e anonimizada; uso demonstrativo.",
+  "faixas": [
+    {
+      "nome": "Normal",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "nome": "Acompanhamento",
+      "min": 50,
+      "max": 75
+    },
+    {
+      "nome": "Atenção",
+      "min": 75,
+      "max": 90
+    },
+    {
+      "nome": "Crítico",
+      "min": 90,
+      "max": 100
+    },
+    {
+      "nome": "Atrasado",
+      "min": 100,
+      "max": null
+    }
+  ],
+  "regras_sla": {
+    "incidente": {
+      "vip": 8,
+      "1": 4,
+      "2": 8,
+      "3": 16,
+      "4": 24
+    },
+    "requisicao": {
+      "vip": 24,
+      "standard": 72
+    }
+  },
+  "classificacao": {
+    "tipo": "regressao_logistica",
+    "intercepto": 1.332238,
+    "numericas": [
+      {
+        "nome": "prioridade_num",
+        "media": 3.87037,
+        "desvio": 0.47322,
+        "coef": -0.398868
+      },
+      {
+        "nome": "log_atualizacoes",
+        "media": 1.270968,
+        "desvio": 0.303428,
+        "coef": 2.467179
+      }
+    ],
+    "categoricas": [
+      {
+        "coluna": "Categoria",
+        "valores": {
+          "Access Management": 0.115734,
+          "Accounts & Passwords": 0.683537,
+          "Cloud Services": -0.23984,
+          "Collaboration & Office 365": -0.074032,
+          "Computers, Equipment and Acessories": 0.602918,
+          "Desk Phone and Mobile devices": -1.179463,
+          "Email & Communication": -0.019397,
+          "Exclusive IT Team Services": -0.201768,
+          "Other Systems and Application": -0.915261,
+          "Printing Services": 0.294621,
+          "Software": 0.932976
+        }
+      },
+      {
+        "coluna": "GrupoAtribuicao",
+        "valores": {
+          "CMP-INC-FILA-DOIS": -0.860125,
+          "CMP-INC-FILA-UM": 0.86015
+        }
+      }
+    ]
+  },
+  "agrupamento": {
+    "colunas": [
+      "log_horas",
+      "log_atualizacoes",
+      "prioridade_num"
+    ],
+    "media": [
+      1.510479,
+      1.270968,
+      3.87037
+    ],
+    "desvio": [
+      1.066871,
+      0.303428,
+      0.47322
+    ],
+    "ids": [
+      1,
+      2,
+      3
+    ],
+    "nomes": [
+      "Backlog prolongado",
+      "Fluxo regular",
+      "Urgentes em atraso"
+    ],
+    "centroides": [
+      [
+        0.91299,
+        0.803379,
+        0.273931
+      ],
+      [
+        -0.76697,
+        -0.691369,
+        0.273931
+      ],
+      [
+        0.596858,
+        0.629569,
+        -3.013243
+      ]
+    ]
+  }
+}

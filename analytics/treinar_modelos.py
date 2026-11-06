@@ -447,6 +447,11 @@ def main():
                        "requisicao": {"vip": 24, "standard": 72}},
         "classificacao": p_cls,
         "agrupamento": p_agr,
+        "relatorio": {  # números exibidos na tela Funções Analíticas
+            "sumarizacao": resumo,
+            "agrupamento": r_agr,
+            "classificacao": {"validacao": validacao, "coeficientes": coeficientes[:12]},
+        },
     }
     SAIDA_MODELO.write_text(json.dumps(modelo, ensure_ascii=False, indent=2), encoding="utf-8")
     SAIDA_METRICAS.write_text(json.dumps({

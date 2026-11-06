@@ -98,7 +98,8 @@ create table decisoes (
   criterios_relevantes      text,
   pesos                     jsonb,
   notas                     jsonb,
-  resultado_posterior       text
+  resultado_posterior       text,
+  contexto                  jsonb          -- retrato do chamado no momento da decisão
 );
 
 create table cenarios (
@@ -151,9 +152,9 @@ alter table chamados_ativos     enable row level security;
 alter table decisoes            enable row level security;
 alter table cenarios            enable row level security;
 
--- Perfis: cada pessoa vê o próprio; administrador vê todos.
-create policy perfis_leitura on perfis for select to authenticated
-  using (id = auth.uid() or perfil_atual() = 'administrador');
+-- Perfis: nome e função são visíveis a quem está logado (para mostrar o responsável
+-- de cada decisão no histórico). Ninguém altera perfis pelo site.
+create policy perfis_leitura on perfis for select to authenticated using (true);
 
 -- Tabelas de apoio: todos os usuários logados leem; só administrador altera.
 create policy regras_leitura  on regras_sla          for select to authenticated using (true);

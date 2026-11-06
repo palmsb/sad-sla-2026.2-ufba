@@ -246,51 +246,51 @@
     "coeficientes": [
       {
         "variavel": "log_atualizacoes (padronizada)",
-        "coeficiente": 2.467179
+        "coeficiente": 2.467277
       },
       {
         "variavel": "Categoria = Desk Phone and Mobile devices",
-        "coeficiente": -1.179463
+        "coeficiente": -1.181788
       },
       {
         "variavel": "Categoria = Software",
-        "coeficiente": 0.932976
+        "coeficiente": 0.932975
       },
       {
         "variavel": "Categoria = Other Systems and Application",
-        "coeficiente": -0.915261
+        "coeficiente": -0.916338
       },
       {
         "variavel": "GrupoAtribuicao = CMP-INC-FILA-UM",
-        "coeficiente": 0.86015
+        "coeficiente": 0.86042
       },
       {
         "variavel": "GrupoAtribuicao = CMP-INC-FILA-DOIS",
-        "coeficiente": -0.860125
+        "coeficiente": -0.859459
       },
       {
         "variavel": "Categoria = Accounts & Passwords",
-        "coeficiente": 0.683537
+        "coeficiente": 0.681444
       },
       {
         "variavel": "Categoria = Computers, Equipment and Acessories",
-        "coeficiente": 0.602918
+        "coeficiente": 0.602396
       },
       {
         "variavel": "prioridade_num (padronizada)",
-        "coeficiente": -0.398868
+        "coeficiente": -0.398887
       },
       {
         "variavel": "Categoria = Printing Services",
-        "coeficiente": 0.294621
+        "coeficiente": 0.299485
       },
       {
         "variavel": "Categoria = Cloud Services",
-        "coeficiente": -0.23984
+        "coeficiente": -0.24066
       },
       {
         "variavel": "Categoria = Exclusive IT Team Services",
-        "coeficiente": -0.201768
+        "coeficiente": -0.20179
       }
     ]
   },

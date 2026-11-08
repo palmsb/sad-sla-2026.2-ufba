@@ -60,6 +60,16 @@ ESPEC = [
 ]
 
 
+# Ajustes manuais para a DEMONSTRAÇÃO da regra "probabilidade >= 70% eleva o nível de risco".
+# São aplicados depois do sorteio, então não alteram os demais chamados.
+#   INC_9024: 12% do SLA (risco baixo) com perfil de alta probabilidade -> sobe para médio.
+#   INC_9025: 52% do SLA (risco médio) com perfil de alta probabilidade -> sobe para alto.
+AJUSTES_DEMO = {
+    "INC_9024": {"Categoria": "Software", "GrupoAtribuicao": "CMP-INC-FILA-DOIS", "QuantidadeAtualizacoes": 16},
+    "INC_9025": {"Categoria": "Computers, Equipment and Acessories", "GrupoAtribuicao": "CMP-INC-FILA-DOIS", "QuantidadeAtualizacoes": 20},
+}
+
+
 def horas_contratadas(tipo, prio, vip):
     if tipo == "INC":
         return 8 if vip else HORAS_INCIDENTE[prio]
@@ -109,6 +119,9 @@ def main():
         })
 
     fila = pd.DataFrame(linhas)
+    for numero, campos in AJUSTES_DEMO.items():
+        for coluna, valor in campos.items():
+            fila.loc[fila["Número"] == numero, coluna] = valor
     fila["DataCriacao"] = pd.to_datetime(fila["DataCriacao"])
     fila.to_excel(SAIDA, index=False)
     print(f"Fila fictícia gerada: {SAIDA} ({len(fila)} chamados)")

@@ -17,6 +17,7 @@ import sys
 import warnings
 from datetime import date
 from pathlib import Path
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -59,18 +60,40 @@ REGRAS_SLA = [  # (tipo, prioridade, vip, horas, descrição)
     ("REQUISIÇÃO", None, True, 24, "Requisição VIP"),
     ("REQUISIÇÃO", None, False, 72, "Requisição standard"),
 ]
-CRITERIOS = [  # (nome, origem, peso inicial %, descrição)
-    ("Redução do risco", "usuario", 25, "Quanto a ação reduz o risco de violar o SLA"),
-    ("Velocidade", "usuario", 15, "Rapidez com que a ação produz efeito"),
-    ("Esforço operacional", "usuario", 10, "Esforço necessário da equipe (nota maior = menos esforço)"),
-    ("Impacto na fila", "usuario", 10, "Efeito da ação sobre os demais chamados da fila"),
-    ("Adequação à prioridade", "usuario", 15, "Se a ação é proporcional à prioridade do chamado"),
-    ("Viabilidade", "usuario", 15, "Se a ação pode ser executada na prática"),
-    ("Disponibilidade", "usuario", 10, "Disponibilidade de pessoas para executar a ação"),
-    ("Condição VIP", "sistema", 0, "Atenção especial a chamados de usuários VIP"),
-    ("Envolvimento da liderança", "usuario", 0, "Necessidade de envolver a liderança"),
-    ("Dependência profissional", "usuario", 0, "Dependência de um profissional específico"),
+# Ordem de importância dos critérios de decisão, da mais para a menos importante (julgamento da autora).
+# Justificativa: "Adequação à prioridade" fica acima de "Velocidade" porque uma ação rápida não substitui a
+# prioridade do chamado (um chamado VIP continua prioritário mesmo que a solução leve poucos minutos).
+# Os critérios de contexto (VIP, liderança e dependência) começam com peso 0 e o decisor os ativa quando o caso pede.
+ORDEM_IMPORTANCIA = [
+    "Redução do risco", "Adequação à prioridade", "Velocidade", "Viabilidade",
+    "Esforço operacional", "Impacto na fila", "Disponibilidade",
 ]
+
+
+def pesos_roc(ordem):
+    """Rank Order Centroid (Barron e Barrett, 1996): w_i = (1/n) * soma de 1/k, de k = i até n (em %)."""
+    n = len(ordem)
+    pesos = [round(sum(1 / k for k in range(i, n + 1)) / n * 100, 1) for i in range(1, n + 1)]
+    sobra = round(100 - sum(pesos), 1)          # corrige o arredondamento para a soma ser exatamente 100
+    if sobra:
+        pesos[0] = round(pesos[0] + sobra, 1)
+    return dict(zip(ordem, pesos))
+
+
+PESO_ROC = pesos_roc(ORDEM_IMPORTANCIA)
+_CRITERIOS_BASE = [  # (nome, origem, descrição)
+    ("Redução do risco", "usuario", "Quanto a ação reduz o risco de violar o SLA"),
+    ("Velocidade", "usuario", "Rapidez com que a ação produz efeito"),
+    ("Esforço operacional", "usuario", "Esforço necessário da equipe (nota maior = menos esforço)"),
+    ("Impacto na fila", "usuario", "Efeito da ação sobre os demais chamados da fila"),
+    ("Adequação à prioridade", "usuario", "Se a ação é proporcional à prioridade do chamado"),
+    ("Viabilidade", "usuario", "Se a ação pode ser executada na prática"),
+    ("Disponibilidade", "usuario", "Disponibilidade de pessoas para executar a ação"),
+    ("Condição VIP", "sistema", "Atenção especial a chamados de usuários VIP"),
+    ("Envolvimento da liderança", "usuario", "Necessidade de envolver a liderança"),
+    ("Dependência profissional", "usuario", "Dependência de um profissional específico"),
+]
+CRITERIOS = [(n, o, PESO_ROC.get(n, 0), d) for n, o, d in _CRITERIOS_BASE]  # (nome, origem, peso inicial %, descrição)
 ALTERNATIVAS = [
     ("Manter no fluxo atual", "Seguir o atendimento sem mudança"),
     ("Priorizar o atendimento", "Colocar o chamado à frente na fila do analista"),

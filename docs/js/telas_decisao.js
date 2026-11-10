@@ -88,7 +88,7 @@
   function desenharPesos() {
     var m = E.matriz;
     document.getElementById('m-pesos').innerHTML =
-      '<p class="nota">Defina a importância de cada critério. A pontuação usa a soma ponderada dividida pela soma dos pesos, então a soma não precisa ser exatamente 100%.</p>' +
+      '<p class="nota">Defina a importância de cada critério. Os valores iniciais vêm da ordem de importância dos critérios (método ROC) e podem ser alterados. A pontuação usa a soma ponderada dividida pela soma dos pesos, então a soma não precisa ser exatamente 100%.</p>' +
       '<div class="pesos">' + E.criterios.map(function (c, j) {
         return '<div class="peso"><label for="peso-' + j + '">' + esc(c.nome) + ' ' + A.dica(c.descricao || '') + ' <span class="tag ' + (c.origem === 'sistema' ? 't-calc' : 't-ok') + '">' + (c.origem === 'sistema' ? 'sistema' : 'decisor') + '</span></label><div class="peso-linha"><input id="peso-' + j + '" type="range" min="0" max="100" step="1" value="' + m.pesos[j] + '" data-peso="' + j + '"><output id="pv-' + j + '">' + A.n1(m.pesos[j]) + '%</output></div></div>';
       }).join('') + '</div>' +
@@ -129,7 +129,7 @@
     document.getElementById('m-matriz').innerHTML = ranking + aviso +
       '<div class="rolagem"><table class="tabela matriz"><thead><tr><th>Alternativas</th><th>Pontuação ponderada</th>' + cab + '<th>Vantagens</th><th>Limitações</th></tr></thead><tbody>' + linhas + '</tbody></table></div>' +
       '<div class="aviso-apoio">A maior pontuação representa o melhor desempenho segundo os critérios e pesos atuais. <b>Ela não determina a decisão final.</b></div>' +
-      '<details class="explica"><summary>Como a pontuação é calculada e quais são as limitações?</summary><p>Pontuação = soma de (nota × peso) ÷ soma dos pesos considerados. ' + esc(E.padrao.escala) + ' As notas iniciais são hipóteses de demonstração e precisam de validação humana. Se faltar uma nota em qualquer alternativa ativa, esse critério é excluído de todas, preservando uma base uniforme. Critérios com peso zero não influenciam o resultado. Dados ausentes não equivalem a risco zero. As notas marcadas com • foram ajustadas pelo nível de risco do chamado (Alto, Médio ou Baixo), e podem ser alteradas.</p></details>';
+      '<details class="explica"><summary>Como a pontuação é calculada e quais são as limitações?</summary><p>Pontuação = soma de (nota × peso) ÷ soma dos pesos considerados. ' + esc(E.padrao.escala) + ' Os pesos iniciais vêm da ordem de importância dos critérios definida pela autora (método Rank Order Centroid). As notas iniciais e os ajustes por risco são hipóteses de demonstração e precisam de validação humana. Se faltar uma nota em qualquer alternativa ativa, esse critério é excluído de todas, preservando uma base uniforme. Critérios com peso zero não influenciam o resultado. Dados ausentes não equivalem a risco zero. As notas marcadas com • foram ajustadas pelo nível de risco do chamado (Alto, Médio ou Baixo), e podem ser alteradas.</p></details>';
     if (document.getElementById('d-escolha')) atualizarOpcoesDecisao();
   }
 

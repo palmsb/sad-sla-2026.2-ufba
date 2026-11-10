@@ -24,7 +24,7 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   };
-  function fixo(v, c) { return v == null || isNaN(v) ? '—' : Number(v).toLocaleString('pt-BR', { minimumFractionDigits: c, maximumFractionDigits: c }); }
+  function fixo(v, c) { return v == null || isNaN(v) ? '—' : L.arred(Number(v), c).toLocaleString('pt-BR', { minimumFractionDigits: c, maximumFractionDigits: c }); }
   A.n0 = function (v) { return fixo(v, 0); };
   A.n1 = function (v) { return fixo(v, 1); };
   A.n2 = function (v) { return fixo(v, 2); };

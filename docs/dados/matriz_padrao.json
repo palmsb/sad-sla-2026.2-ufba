@@ -3,32 +3,133 @@
   "aviso": "As notas iniciais são hipóteses de demonstração definidas pelo autor do trabalho, não efeitos operacionais medidos. Elas precisam de validação humana.",
   "escala": "Em todos os critérios, nota 5 é a mais favorável à decisão: maior redução de risco, maior velocidade, menor esforço, menor impacto negativo na fila, maior adequação, maior viabilidade, maior disponibilidade, melhor atendimento à condição VIP, menor envolvimento da liderança e menor dependência profissional.",
   "criterios": [
-    "Redução do risco", "Velocidade", "Esforço operacional", "Impacto na fila",
-    "Adequação à prioridade", "Viabilidade", "Disponibilidade", "Condição VIP",
-    "Envolvimento da liderança", "Dependência profissional"
+    "Redução do risco",
+    "Velocidade",
+    "Esforço operacional",
+    "Impacto na fila",
+    "Adequação à prioridade",
+    "Viabilidade",
+    "Disponibilidade",
+    "Condição VIP",
+    "Envolvimento da liderança",
+    "Dependência profissional"
   ],
   "alternativas": [
-    { "nome": "Manter no fluxo atual", "notas": [2, 3, 5, 5, 2, 5, 4, 2, 5, 5],
-      "vantagem": "Preserva continuidade e capacidade da fila.", "limitacao": "Pode manter a exposição ao risco." },
-    { "nome": "Priorizar o atendimento", "notas": [5, 5, 3, 2, 5, 4, 3, 5, 4, 4],
-      "vantagem": "Concentra esforço na redução do risco.", "limitacao": "Desloca capacidade de outros chamados." },
-    { "nome": "Redistribuir para outro analista", "notas": [4, 4, 3, 3, 4, 4, 2, 4, 4, 2],
-      "vantagem": "Permite acesso a outra capacidade técnica.", "limitacao": "Exige disponibilidade e transferência de contexto." },
-    { "nome": "Escalonar para a liderança", "notas": [4, 3, 2, 3, 4, 3, 3, 4, 1, 2],
-      "vantagem": "Amplia a coordenação operacional.", "limitacao": "Depende da participação da liderança." },
-    { "nome": "Solicitar complementação de informações", "notas": [2, 2, 4, 4, 3, 4, 4, 3, 5, 2],
-      "vantagem": "Reduz lacunas de informação.", "limitacao": "Depende do retorno de terceiros." }
+    {
+      "nome": "Manter no fluxo atual",
+      "notas": [
+        2,
+        3,
+        5,
+        5,
+        2,
+        5,
+        4,
+        2,
+        5,
+        5
+      ],
+      "vantagem": "Preserva continuidade e capacidade da fila.",
+      "limitacao": "Pode manter a exposição ao risco."
+    },
+    {
+      "nome": "Priorizar o atendimento",
+      "notas": [
+        5,
+        5,
+        3,
+        2,
+        5,
+        4,
+        3,
+        5,
+        4,
+        4
+      ],
+      "vantagem": "Concentra esforço na redução do risco.",
+      "limitacao": "Desloca capacidade de outros chamados."
+    },
+    {
+      "nome": "Redistribuir para outro analista",
+      "notas": [
+        4,
+        4,
+        3,
+        3,
+        4,
+        4,
+        2,
+        4,
+        4,
+        2
+      ],
+      "vantagem": "Permite acesso a outra capacidade técnica.",
+      "limitacao": "Exige disponibilidade e transferência de contexto."
+    },
+    {
+      "nome": "Escalonar para a liderança",
+      "notas": [
+        4,
+        3,
+        2,
+        3,
+        4,
+        3,
+        3,
+        4,
+        1,
+        2
+      ],
+      "vantagem": "Amplia a coordenação operacional.",
+      "limitacao": "Depende da participação da liderança."
+    },
+    {
+      "nome": "Solicitar complementação de informações",
+      "notas": [
+        2,
+        2,
+        4,
+        4,
+        3,
+        4,
+        4,
+        3,
+        5,
+        2
+      ],
+      "vantagem": "Reduz lacunas de informação.",
+      "limitacao": "Depende do retorno de terceiros."
+    }
   ],
   "ajustes_por_risco": {
     "alto": {
-      "Redução do risco": { "Manter no fluxo atual": -1, "Escalonar para a liderança": 1, "Solicitar complementação de informações": -1 },
-      "Adequação à prioridade": { "Manter no fluxo atual": -1, "Escalonar para a liderança": 1, "Solicitar complementação de informações": -1 }
+      "Redução do risco": {
+        "Manter no fluxo atual": -1,
+        "Escalonar para a liderança": 1,
+        "Solicitar complementação de informações": -1
+      },
+      "Adequação à prioridade": {
+        "Manter no fluxo atual": -1,
+        "Escalonar para a liderança": 1,
+        "Solicitar complementação de informações": -1
+      }
     },
     "medio": {},
     "baixo": {
-      "Redução do risco": { "Manter no fluxo atual": 1, "Priorizar o atendimento": -1, "Escalonar para a liderança": -1 },
-      "Adequação à prioridade": { "Manter no fluxo atual": 2, "Priorizar o atendimento": -1, "Redistribuir para outro analista": -1, "Escalonar para a liderança": -2 }
+      "Redução do risco": {
+        "Manter no fluxo atual": 1,
+        "Priorizar o atendimento": -2,
+        "Redistribuir para outro analista": -1,
+        "Escalonar para a liderança": -2
+      },
+      "Adequação à prioridade": {
+        "Manter no fluxo atual": 2,
+        "Priorizar o atendimento": -2,
+        "Redistribuir para outro analista": -1,
+        "Escalonar para a liderança": -2
+      }
     }
   },
-  "peso_vip_sugerido": 10
+  "peso_vip_sugerido": 10,
+  "pesos_metodo": "Pesos iniciais obtidos pelo método Rank Order Centroid (ROC) a partir da ordem de importância definida pela autora; os critérios de contexto começam em 0."
 }

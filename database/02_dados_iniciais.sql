@@ -11,13 +11,13 @@ insert into regras_sla (tipo_chamado, prioridade, vip, horas_contratadas, descri
   ('REQUISIÇÃO', NULL, false, 72, 'Requisição standard');
 
 insert into criterios (nome, origem, peso_inicial, descricao, ordem) values
-  ('Redução do risco', 'usuario', 25, 'Quanto a ação reduz o risco de violar o SLA', 1),
-  ('Velocidade', 'usuario', 15, 'Rapidez com que a ação produz efeito', 2),
-  ('Esforço operacional', 'usuario', 10, 'Esforço necessário da equipe (nota maior = menos esforço)', 3),
-  ('Impacto na fila', 'usuario', 10, 'Efeito da ação sobre os demais chamados da fila', 4),
-  ('Adequação à prioridade', 'usuario', 15, 'Se a ação é proporcional à prioridade do chamado', 5),
-  ('Viabilidade', 'usuario', 15, 'Se a ação pode ser executada na prática', 6),
-  ('Disponibilidade', 'usuario', 10, 'Disponibilidade de pessoas para executar a ação', 7),
+  ('Redução do risco', 'usuario', 37.0, 'Quanto a ação reduz o risco de violar o SLA', 1),
+  ('Velocidade', 'usuario', 15.6, 'Rapidez com que a ação produz efeito', 2),
+  ('Esforço operacional', 'usuario', 7.3, 'Esforço necessário da equipe (nota maior = menos esforço)', 3),
+  ('Impacto na fila', 'usuario', 4.4, 'Efeito da ação sobre os demais chamados da fila', 4),
+  ('Adequação à prioridade', 'usuario', 22.8, 'Se a ação é proporcional à prioridade do chamado', 5),
+  ('Viabilidade', 'usuario', 10.9, 'Se a ação pode ser executada na prática', 6),
+  ('Disponibilidade', 'usuario', 2.0, 'Disponibilidade de pessoas para executar a ação', 7),
   ('Condição VIP', 'sistema', 0, 'Atenção especial a chamados de usuários VIP', 8),
   ('Envolvimento da liderança', 'usuario', 0, 'Necessidade de envolver a liderança', 9),
   ('Dependência profissional', 'usuario', 0, 'Dependência de um profissional específico', 10);

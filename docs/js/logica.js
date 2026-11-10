@@ -17,7 +17,9 @@
   function semAcento(t) { return String(t == null ? '' : t).normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
   function norm(t) { return semAcento(t).toLowerCase().replace(/\s+/g, ' ').trim(); }
   function chave(t) { return norm(t).replace(/[^a-z0-9]+/g, ''); }
-  function arred(v, casas) { var f = Math.pow(10, casas); return Math.round(v * f) / f; }
+  // Arredondamento padrão do sistema: a metade sempre sobe (3,525 -> 3,53). O 1e-7 evita que erros de
+  // representação decimal do computador façam uma metade cair para baixo.
+  function arred(v, casas) { var f = Math.pow(10, casas); return Math.round(v * f + 1e-7) / f; }
 
   var ENCERRADOS = ['resolvido', 'resolved', 'fechado', 'closed', 'concluido', 'complete', 'completed',
     'encerrado', 'fechado completo', 'fechado incompleto'];
@@ -317,6 +319,12 @@
     var somaOutros = base.reduce(function (a, b, i) { return i === idxVip ? a : a + b; }, 0);
     var fator = somaOutros > 0 ? (100 - alvo) / somaOutros : 0;
     var novos = base.map(function (p, i) { return i === idxVip ? alvo : arred(p * fator, 1); });
+    var sobra = arred(100 - novos.reduce(function (a, b) { return a + b; }, 0), 1);   // corrige o arredondamento
+    if (sobra !== 0) {
+      var iMax = -1;
+      novos.forEach(function (p, i) { if (i !== idxVip && (iMax < 0 || p > novos[iMax])) iMax = i; });
+      novos[iMax] = arred(novos[iMax] + sobra, 1);
+    }
     return { pesos: novos, vipSugerido: true };
   }
 

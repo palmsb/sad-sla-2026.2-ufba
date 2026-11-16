@@ -15,7 +15,7 @@ A descrição completa do método, da validação e dos resultados está no **re
 |---|---|
 | **Sistema (online)** | https://palmsb.github.io/sad-sla-2026.2-ufba/ |
 | **Repositório** | https://github.com/palmsb/sad-sla-2026.2-ufba |
-| **Vídeo de demonstração** | _(colar o link do vídeo aqui)_ |
+| **Vídeo de demonstração** |[ _(Assista aqui)_ ](https://youtu.be/6LFhYNRLqmw)|
 
 **Credenciais de demonstração** (as senhas estão no relatório em PDF):
 
